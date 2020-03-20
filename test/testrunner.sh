@@ -15,7 +15,8 @@ TESTFILES=/tmp/testfiles.txt
 # Collect some files to test.
 # Idea: text files from /etc, and binaries from /usr/bin.
 
-find /etc     -maxdepth 1  -type f  \! -name '.*' -readable | xargs ls -S 2>/dev/null | head -15  >$TESTFILES
+find ./noregression_files -maxdepth 1  -type f    -readable | xargs ls -S 2>/dev/null | head -15  >$TESTFILES
+find /etc     -maxdepth 1  -type f  \! -name '.*' -readable | xargs ls -S 2>/dev/null | head -15 >>$TESTFILES
 find /usr/bin -maxdepth 1  -type f                -readable | xargs ls -S 2>/dev/null | head -15 >>$TESTFILES
 
 TOTBYTES=0
